@@ -1,7 +1,7 @@
-exe=exe
+executable=NotPOSPOS
 
 all: main.o order.o item.o
-	g++ main.o order.o item.o -o $(exe)
+	g++ main.o order.o item.o -o $(executable)
 
 main.o: main.cpp item.h order.h
 	g++ -c main.cpp

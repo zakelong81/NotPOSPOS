@@ -1,18 +1,18 @@
 #include "item.h"
 
 item::item() {
-  name = "Banana";
-  price = 10;
-  sku = 1001;
+  name = "Undefined Item";
+  price = 0.00;
+  sku = -1;
 }
 
-item::item(string name, double price, int sku) {
+item::item(std::string name, double price, int sku) {
   this->name = name;
   this->price = price;
   this->sku = sku;
 }
 
-string item::getName() {
+std::string item::getName() {
   return name;
 }
 

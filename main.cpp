@@ -25,7 +25,7 @@ int main()
   cout << std::setprecision(2);
 
   cout << "Cart-" << endl;
-  vector<item> cart = current.getItems();;
+  std::vector<item> cart = current.getItems();;
   for(int i = 0;i < cart.size();i++) {
     cout << cart[i].getName() << ": $" << cart[i].getPrice() << endl;
   }

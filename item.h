@@ -1,20 +1,19 @@
 #ifndef ITEM_H
 #define ITEM_H
-
+#include <string>
 #include "IItem.h"
 
-using std::string;
 
 class item : public IItem {
   private:
-    string name;
+    std::string name;
     double price;
     int sku;
   public:
     item();
-    item(string, double, int);
+    item(std::string, double, int);
   public:
-    string getName();
+    std::string getName();
     double getPrice();
     int getSKU();
 };
