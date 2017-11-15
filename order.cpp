@@ -2,14 +2,17 @@
 
 order::order() {
   tax = 0.0725;
+  closed = false;
 }
 
 order::order(double tax) {
   this->tax = tax;
+  closed = false;
 }
 
 void order::addItem(item i) {
-  itemList.push_back(i);
+  if( !closed )
+    itemList.push_back(i);
 }
 
 std::vector<item> order::getItems() {
@@ -33,5 +36,6 @@ double order::getTotal() {
 }
 
 double order::balance(double paid) {
+  closed = true;
   return getTotal() - paid;
 }

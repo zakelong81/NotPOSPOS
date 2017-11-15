@@ -1,25 +1,34 @@
-executable=NotPOSPOS
+EXECUTABLE=NotPOSPOS
+CXX=g++
 
-all: main.o order.o item.o StoreInventory.o cashierView.o customerView.o
-	g++ main.o order.o item.o StoreInventory.o cashierView.o customerView.o -o $(executable)
+all: main.o order.o item.o registerController.o StoreInventory.o \
+	cashierView.o customerView.o
+	$(CXX) main.o order.o item.o registerController.o StoreInventory.o \
+	cashierView.o customerView.o -o $(EXECUTABLE)
 
 main.o: main.cpp item.h order.h
-	g++ -c main.cpp
+	@$(CXX) -c main.cpp
 
 order.o: order.h order.cpp IOrder.h
-	g++ -c order.cpp
+	@$(CXX) -c order.cpp
 
 item.o: item.h item.cpp IItem.h
-	g++ -c item.cpp
+	@$(CXX) -c item.cpp
+
+registerController.o: StoreInventory.o cashierView.o customerView.o order.o \
+	item.o registerController.h registerController.cpp
+	@$(CXX) -c registerController.cpp
 
 StoreInventory.o: StoreInventory.h StoreInventory.cpp
-	g++ -c StoreInventory.cpp
+	@$(CXX) -c StoreInventory.cpp
 
 cashierView.o: cashierView.h cashierView.cpp
-	g++ -c cashierView.cpp
+	@$(CXX) -c cashierView.cpp
 
 customerView.o: customerView.h customerView.cpp
-	g++ -c customerView.cpp
+	@$(CXX) -c customerView.cpp
+
+
 
 clean:
-	rm *.o $(exe)
+	rm -f *.o *.gch $(EXECUTABLE)
