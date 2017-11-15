@@ -6,6 +6,7 @@
 #include "StoreInventory.h"
 #include "cashierView.h"
 #include "registerController.h"
+#include "keypadController.h"
 
 const char DB_FILE[] = "fruit.db";
 
@@ -21,7 +22,8 @@ int main()
   while( true )
   {
     order current;
-    registerController ticket(inventory,current);
+    keypadController keypad(&current);
+    registerController ticket(&inventory,&current);
   }
 
   return 0;

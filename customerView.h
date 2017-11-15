@@ -5,7 +5,7 @@
 class customerView
 {
   public:
-    void refresh(order & running);
+    void refresh(order running);
 };
 
 #endif

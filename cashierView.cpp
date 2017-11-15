@@ -3,7 +3,7 @@
 #include <vector>
 #include "cashierView.h"
 
-void cashierView::displayRunningTotal(order & running)
+void cashierView::displayRunningTotal(order running)
 {
   std::cout<<"================\n"
            <<"CASHIER'S SCREEN\n";
@@ -17,7 +17,7 @@ void cashierView::displayRunningTotal(order & running)
            <<"================\n";
 }
 
-void cashierView::displayFinalReceipt(order & final)
+void cashierView::displayFinalReceipt(order final)
 {
   std::cout<<"================\n"
            <<"CASHIER'S SCREEN\n";

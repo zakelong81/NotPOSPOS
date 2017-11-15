@@ -5,9 +5,9 @@
 class cashierView
 {
   public:
-    void displayRunningTotal(order & running);
+    void displayRunningTotal(order running);
 
-    void displayFinalReceipt(order & final);
+    void displayFinalReceipt(order final);
 };
 
 #endif
