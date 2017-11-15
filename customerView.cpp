@@ -2,7 +2,7 @@
 #include <iomanip>
 #include "customerView.h"
 
-void customerView::refresh(order & running)
+void customerView::refresh(order running)
 {
   std::cout<<"===============\n"
            <<"CUSTOMER SCREEN\n"

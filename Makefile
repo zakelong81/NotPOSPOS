@@ -2,9 +2,9 @@ EXECUTABLE=NotPOSPOS
 CXX=g++
 
 all: main.o order.o item.o registerController.o StoreInventory.o \
-	cashierView.o customerView.o
+	cashierView.o customerView.o keypadController.o
 	$(CXX) main.o order.o item.o registerController.o StoreInventory.o \
-	cashierView.o customerView.o -o $(EXECUTABLE)
+	cashierView.o customerView.o keypadController.o -o $(EXECUTABLE)
 
 main.o: main.cpp item.h order.h
 	@$(CXX) -c main.cpp
@@ -15,9 +15,12 @@ order.o: order.h order.cpp IOrder.h
 item.o: item.h item.cpp IItem.h
 	@$(CXX) -c item.cpp
 
-registerController.o: StoreInventory.o cashierView.o customerView.o order.o \
+registerController.o: StoreInventory.o cashierView.o order.o item.o \
 	item.o registerController.h registerController.cpp
 	@$(CXX) -c registerController.cpp
+
+keypadController.o: customerView.o order.o keypadController.h keypadController.cpp
+	@$(CXX) -c keypadController.cpp
 
 StoreInventory.o: StoreInventory.h StoreInventory.cpp
 	@$(CXX) -c StoreInventory.cpp

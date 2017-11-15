@@ -1,15 +1,11 @@
 #include <iostream>
 #include <string>
 #include "registerController.h"
-#include "cashierView.h"
-#include "customerView.h"
 #include "order.h"
 #include "item.h"
 
-registerController::registerController(StoreInventory & inventory, order & checkout)
+registerController::registerController(StoreInventory * inventory, order * checkout)
 {
-  cashierView screen;
-  customerView remoteScreen;
   std::string command;
   double option;
 
@@ -20,10 +16,9 @@ registerController::registerController(StoreInventory & inventory, order & check
     
     if(command.compare("buy") == 0)
     {
-      item add = inventory.lookup((int)option);
-      checkout.addItem(add);
-      screen.displayRunningTotal(checkout);
-      remoteScreen.refresh(checkout);
+      item add = inventory->lookup((int)option);
+      checkout->addItem(add);
+      screen.displayRunningTotal(*checkout);
     }
     else if(command.compare("pay") != 0)
     {
@@ -32,7 +27,6 @@ registerController::registerController(StoreInventory & inventory, order & check
                <<"pay <amount>\n";
     }
   }while( command.compare("pay") != 0 );
-  checkout.balance(option);
-  screen.displayFinalReceipt(checkout);
-  remoteScreen.refresh(checkout);
+  checkout->balance(option);
+  screen.displayFinalReceipt(*checkout);
 }
