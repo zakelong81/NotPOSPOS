@@ -6,6 +6,7 @@ class order : public IOrder {
   private:
     std::vector<item> itemList;
     double tax;
+    bool closed;
   public:
     order();
     order(double);

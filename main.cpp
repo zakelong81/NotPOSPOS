@@ -1,42 +1,28 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include "order.h"
 #include "item.h"
+#include "StoreInventory.h"
+#include "cashierView.h"
+#include "registerController.h"
 
-using std::cout;
-using std::endl;
+const char DB_FILE[] = "fruit.db";
 
-//the user's actions
 int main()
 {
-  cout<<"======================\n"
-           <<"Welcome to Not POS POS\n"
+  StoreInventory inventory (DB_FILE);
+  char delim = ' ';
+  std::string command, option;
+
+  std::cout<<"======================\n"
+           <<"NotPOSPOS  Version 0.1\n"
            <<"======================\n";
-  order current;
-  item newItem;
-  item apple("Apple", 18, 1002);
-  item gas("Gas", 1.82, 1003);
-
-  current.addItem(newItem);
-  current.addItem(apple);
-  current.addItem(gas);
-
-  cout << std::fixed;
-  cout << std::setprecision(2);
-
-  cout << "Cart-" << endl;
-  std::vector<item> cart = current.getItems();;
-  for(int i = 0;i < cart.size();i++) {
-    cout << cart[i].getName() << ": $" << cart[i].getPrice() << endl;
+  while( true )
+  {
+    order current;
+    registerController ticket(inventory,current);
   }
-  cout <<"======================" << endl;
-
-  cout << "Subtotal: $" << current.getSubtotal() << endl;
-  cout << "Tax:      $" << current.getTax() * current.getSubtotal() << endl;
-  cout << "Total:    $" << current.getTotal() << endl;
-
-  cout << "Paid:     $30.00" << endl;
-  cout << "Balance:  $" << current.balance(30.00) << endl;
 
   return 0;
 }
