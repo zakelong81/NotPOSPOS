@@ -7,9 +7,12 @@
 class registerController
 {
 private:
+  StoreInventory *database;
+  order *cart;
   cashierView screen;
 public:
   registerController(StoreInventory *, order *);
+  void processOrder();
 };
 
 #endif

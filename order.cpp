@@ -12,7 +12,9 @@ order::order(double tax) {
 
 void order::addItem(item i) {
   if( !closed )
+  {
     itemList.push_back(i);
+  }
 }
 
 std::vector<item> order::getItems() {

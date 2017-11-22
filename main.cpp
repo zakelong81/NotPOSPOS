@@ -19,6 +19,7 @@ int main()
   order current;
   keypadController keypad(&current);
   registerController ticket(&inventory,&current);
+  ticket.processOrder();
 
   return 0;
 }

@@ -10,7 +10,6 @@ private:
   customerView display;
 public:
   keypadController(order *);
-  void enterMembership(int);
 };
 
 #endif

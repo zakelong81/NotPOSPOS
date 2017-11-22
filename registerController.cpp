@@ -6,6 +6,12 @@
 
 registerController::registerController(StoreInventory * inventory, order * checkout)
 {
+  database = inventory;
+  cart = checkout;
+}
+
+void registerController::processOrder()
+{
   std::string command;
   double option;
 
@@ -16,9 +22,8 @@ registerController::registerController(StoreInventory * inventory, order * check
     
     if(command.compare("buy") == 0)
     {
-      item add = inventory->lookup((int)option);
-      checkout->addItem(add);
-      screen.displayRunningTotal(*checkout);
+      item add = database->lookup((int)option);
+      cart->addItem(add);
     }
     else if(command.compare("pay") != 0)
     {
@@ -27,6 +32,6 @@ registerController::registerController(StoreInventory * inventory, order * check
                <<"pay <amount>\n";
     }
   }while( command.compare("pay") != 0 );
-  checkout->balance(option);
-  screen.displayFinalReceipt(*checkout);
+  cart->balance(option);
+  screen.displayFinalReceipt(*cart);
 }
