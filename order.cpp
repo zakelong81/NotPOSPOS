@@ -15,6 +15,7 @@ void order::addItem(item i) {
   {
     itemList.push_back(i);
   }
+  notifyObservers();
 }
 
 std::vector<item> order::getItems() {

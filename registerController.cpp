@@ -4,6 +4,11 @@
 #include "order.h"
 #include "item.h"
 
+void registerController::updateControll()
+{
+  screen.displayRunningTotal(*cart);
+}
+
 registerController::registerController(StoreInventory * inventory, order * checkout)
 {
   database = inventory;
@@ -19,7 +24,7 @@ void registerController::processOrder()
   {
     std::cout<<"> ";
     std::cin>>command>>option;
-    
+
     if(command.compare("buy") == 0)
     {
       item add = database->lookup((int)option);

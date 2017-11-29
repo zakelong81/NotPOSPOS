@@ -9,6 +9,7 @@ private:
   order *cart;
   customerView display;
 public:
+  void UpdateCart();
   keypadController(order *);
 };
 

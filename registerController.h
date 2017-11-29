@@ -11,6 +11,7 @@ private:
   order *cart;
   cashierView screen;
 public:
+  void updateControll();
   registerController(StoreInventory *, order *);
   void processOrder();
 };
